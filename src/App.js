@@ -6,20 +6,41 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import './App.css';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
+  content: {
+	  display: 'table',
+	  width: '689px',
+	  border: '1px solid #cdd2d2',
+	  fontFamily: 'Helvetica Neue,Helvetica,Apple SD Gothic Neo,AppleGothic,Dotum,Arial,Tahoma',
+	  backgroundColor: '#e2b6b3',
   },
-  paper: {
-    marginTop: theme.spacing(3),
-    width: '100%',
-    overflowX: 'auto',
-    marginBottom: theme.spacing(2),
+  gamestats: {
+	  width: '70px',
+	  textAlign: 'center',
+	  fontSize: '11px',
+	  color: '#555',
+	  lineHeight: '16px',
   },
-  table: {
-    minWidth: 650,
+  gametype: {
+	  fontWeight: 'bold',
   },
+  bar: {
+	  background: '#cea7a7',
+	  display: 'block',
+	  width: '27px',
+	  margin: '5px auto;',
+	  height: '2px',
+  },
+  gameresult: {
+	  fontWeight: 'bold',
+	  width: '70px',
+	  whiteSpace: 'nowrap',
+	  overflow: 'hidden',
+	  textOverflow: 'ellipsis',
+	  color: '#C6443F',
+  }
 }));
 
 function createData(name, calories, fat, carbs, protein) {
@@ -37,34 +58,27 @@ const rows = [
 export default function DenseTable() {
   const classes = useStyles();
 
-  return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Table className={classes.table} size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell>Dessert (100g serving)</TableCell>
-              <TableCell align="right">Calories</TableCell>
-              <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
-    </div>
+  return ( 
+	<div className={classes.content}>
+		<div className={classes.gamestats}>
+			<div className={classes.gametype}>
+				{/* queue type needs possible variable replacement */}
+				Ranked Solo
+			</div>
+			<div className={classes.timestamp}>
+				{/* time needs possible variable replacement */}
+				4 hours ago
+			</div>
+			<div className={classes.bar}>
+			</div>
+			<div className={classes.gameresult}>
+				{/* game result needs possible variable replacement */}
+				Defeat
+			</div>
+			<div className={classes.gamelength}>
+				24m 56s
+			</div>
+		</div>
+	</div>
   );
 }
